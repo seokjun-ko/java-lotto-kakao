@@ -30,4 +30,17 @@ public class TestLotto {
         }
     }
 
+    @Test
+    void 로또_번호는_모두_달라야_한다() {
+        List<Integer> numbers = List.of(1, 2, 2, 3, 4, 5);
+
+        try {
+            Lotto lotto = new Lotto(numbers);
+            fail();
+        }
+        catch (RuntimeException e){
+            assertThat(e.getMessage()).isEqualTo("로또 번호는 중복될 수 없습니다");
+        }
+    }
+
 }
