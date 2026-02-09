@@ -1,7 +1,10 @@
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import model.Lotto;
 import org.junit.jupiter.api.Test;
 import model.AutoLottoGenerator;
+
+import java.util.List;
 
 public class TestAutoLottoGenerator {
 	@Test
@@ -9,4 +12,6 @@ public class TestAutoLottoGenerator {
 		AutoLottoGenerator generator = new AutoLottoGenerator();
 		assertThat(generator.makeLotto().size()).isEqualTo(6);
 	}
+
+
 }
