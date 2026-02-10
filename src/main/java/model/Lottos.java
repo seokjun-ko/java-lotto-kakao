@@ -14,6 +14,10 @@ public class Lottos {
         return lottoList.size();
     }
 
+    public List<Lotto> getLottoList(){
+        return lottoList;
+    }
+
     public void add(Lotto lotto){
         lottoList.add(lotto);
     }

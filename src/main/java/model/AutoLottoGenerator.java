@@ -13,8 +13,6 @@ public class AutoLottoGenerator {
 		numbers = IntStream.rangeClosed(1, 45)
 			.boxed()
 			.collect(Collectors.toCollection(ArrayList::new));
-		;
-
 	}
 
 

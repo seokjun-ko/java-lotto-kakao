@@ -4,15 +4,14 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class StoreResult {
-	List<Integer> numbers;
-	Integer bonus;
+	Result result;
 
 	public StoreResult(){
-		numbers = new ArrayList<>();;
+		result = new Result();
 	}
 
 	public List<Integer> setNumber(String input) {
-		numbers = Arrays.stream(input.split(","))
+		List<Integer> numbers = Arrays.stream(input.split(","))
 			.map(String::trim)
 			.map(Integer::parseInt)
 			.collect(Collectors.toList());
@@ -23,22 +22,23 @@ public class StoreResult {
 
 		Set<Integer> set = new HashSet<>();
 		numbers.stream()
-				.filter(n -> !set.add(n)) // set에 추가 실패하면 중복임
+				.filter(n -> !set.add(n))
 				.findFirst()
 				.ifPresent(n -> {
 					throw new IllegalArgumentException("당첨 번호는 중복될 수 없습니다");
 				});
 
-		return numbers;
+		result.setNumbers(numbers);
+		return result.getNumbers();
 	}
 
 	public Integer setBonus(String input) {
 		try {
 			Integer parsedInt = Integer.parseInt(input);
 			if ( 0 >= parsedInt || parsedInt > 45 ) throw new RuntimeException("보너스 번호는 1 ~ 45 사이의 양수로 이루어져야 합니다.");
-			if (numbers.contains(parsedInt)) throw new RuntimeException("보너스 번호는 당첨 번호와 중복될 수 없습니다.");
-			bonus = parsedInt;
-			return bonus;
+			if (result.getNumbers().contains(parsedInt)) throw new RuntimeException("보너스 번호는 당첨 번호와 중복될 수 없습니다.");
+			result.setBonus(parsedInt);
+			return result.getBonus();
 		}
 		catch (NumberFormatException e) {
 			throw new RuntimeException("보너스 번호는 1 ~ 45 사이의 양수로 이루어져야 합니다.");
@@ -46,6 +46,10 @@ public class StoreResult {
 	}
 
 	public Integer size(){
-		return this.numbers.size();
+		return this.result.size();
+	}
+
+	public Result getResult() {
+		return this.result;
 	}
 }
