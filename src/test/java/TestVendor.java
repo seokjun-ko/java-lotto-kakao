@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test;
 public class TestVendor {
     @Test
     void 올바른_금액이_주어졌을때는_적정_개수의_로또를_반환한다(){
-        Integer money = 13000;
+        Integer money = 12000;
 
         Vendor vendor = new Vendor();
 
-        assertThat(vendor.sell(money).getQuantity()).isEqualTo(13);
+        assertThat(vendor.sell(money).getQuantity()).isEqualTo(12);
 
     }
 
@@ -40,4 +40,5 @@ public class TestVendor {
             assertThat(e.getMessage()).isEqualTo("금액은 0보다 커야 합니다");
         }
     }
+
 }

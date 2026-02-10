@@ -1,9 +1,20 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Lottos {
-    public Integer quantity = 13;
+    List<Lotto> lottoList;
+
+    public Lottos(){
+        lottoList = new ArrayList<>();
+    }
 
     public Integer getQuantity(){
-        return quantity;
+        return lottoList.size();
+    }
+
+    public void add(Lotto lotto){
+        lottoList.add(lotto);
     }
 }
