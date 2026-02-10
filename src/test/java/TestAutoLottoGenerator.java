@@ -4,13 +4,11 @@ import model.Lotto;
 import org.junit.jupiter.api.Test;
 import model.AutoLottoGenerator;
 
-import java.util.List;
-
 public class TestAutoLottoGenerator {
 	@Test
 	void 자동으로_생성된_로또번호는_6자리이다() {
 		AutoLottoGenerator generator = new AutoLottoGenerator();
-		assertThat(generator.makeLotto().size()).isEqualTo(6);
+		assertThat(generator.issueLotto().size()).isEqualTo(6);
 	}
 
 	@Test
@@ -45,8 +43,4 @@ public class TestAutoLottoGenerator {
 			assertThat(e.getMessage()).isEqualTo("로또 번호는 중복될 수 없습니다");
 		}
 	}
-
-
-
-
 }

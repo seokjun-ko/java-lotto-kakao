@@ -1,13 +1,25 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class AutoLottoGenerator {
-	public List<Integer> makeLotto() {
-		return List.of(1, 2, 3, 4, 5, 6);
+	private final List<Integer> numbers;
+
+	public AutoLottoGenerator(){
+		numbers = IntStream.rangeClosed(1, 45)
+			.boxed()
+			.collect(Collectors.toCollection(ArrayList::new));
+		;
+
 	}
 
+
 	public Lotto issueLotto() {
-		return new Lotto(List.of(1, 2, 3, 4, 5, 6));
+		Collections.shuffle(numbers);
+		return new Lotto(new ArrayList<>(numbers.subList(0, 6)));
 	}
 }
