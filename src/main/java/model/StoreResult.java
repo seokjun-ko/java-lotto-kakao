@@ -7,9 +7,10 @@ import java.util.stream.Collectors;
 
 public class StoreResult {
 	List<Integer> numbers;
+	Integer bonus;
 
 	public StoreResult(){
-		numbers = new ArrayList<>();
+		numbers = new ArrayList<>();;
 	}
 
 	public List<Integer> setNumber(String input) {
@@ -19,5 +20,10 @@ public class StoreResult {
 			.collect(Collectors.toList());
 
 		return numbers;
+	}
+
+	public Integer setBonus(String input) {
+		bonus = Integer.parseInt(input);
+		return bonus;
 	}
 }

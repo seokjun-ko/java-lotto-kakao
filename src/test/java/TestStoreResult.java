@@ -17,4 +17,12 @@ public class TestStoreResult {
 
 		assertThat(store.setNumber(input)).isEqualTo(answer);
 	}
+
+	@Test
+	void 보너스_볼을_입력했을_때_저장한다(){
+		String input = "7";
+		Integer answer = 7;
+		StoreResult store = new StoreResult();
+		assertThat(store.setBonus(input)).isEqualTo(answer);
+	}
 }
