@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import model.Buyers;
+import model.Lotto;
 import model.Lottos;
 import model.StoreResult;
 
@@ -14,7 +15,9 @@ public class Main {
 			if(!sc.hasNextLine()) return;
 			int money = Integer.parseInt(sc.nextLine().trim());
 			Lottos lottos = buyer.buyLotto(money);
-			Lottos.printLottoTickets(lottos);
+			for (Lotto lotto : lottos.getLottoList()) {
+				System.out.println(lotto.getNumbers());
+			}
 
 			System.out.printf("지난 주 당첨 번호를 입력해 주세요.");
 			if(!sc.hasNextLine()) return;
