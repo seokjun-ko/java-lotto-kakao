@@ -10,7 +10,7 @@ public class AutoLottoGenerator {
 	private final List<Integer> numbers;
 
 	public AutoLottoGenerator(){
-		numbers = IntStream.rangeClosed(1, 45)
+		numbers = IntStream.rangeClosed(LottoNumber.MIN_NUMBER, LottoNumber.MAX_NUMBER)
 			.boxed()
 			.collect(Collectors.toCollection(ArrayList::new));
 	}
@@ -18,6 +18,6 @@ public class AutoLottoGenerator {
 
 	public Lotto issueLotto() {
 		Collections.shuffle(numbers);
-		return new Lotto(new ArrayList<>(numbers.subList(0, 6)));
+		return new Lotto(new ArrayList<>(numbers.subList(0, LottoNumber.LOTTO_SIZE)));
 	}
 }
