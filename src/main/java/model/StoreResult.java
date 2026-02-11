@@ -25,7 +25,7 @@ public class StoreResult {
 				.filter(n -> !set.add(n))
 				.findFirst()
 				.ifPresent(n -> {
-					throw new IllegalArgumentException("당첨 번호는 중복될 수 없습니다");
+					throw new RuntimeException("당첨 번호는 중복될 수 없습니다");
 				});
 
 		result.setNumbers(numbers);
