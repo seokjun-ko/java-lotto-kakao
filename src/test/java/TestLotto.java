@@ -1,12 +1,8 @@
-import model.AutoLottoGenerator;
 import model.Lotto;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 public class TestLotto {
 
@@ -44,14 +40,15 @@ public class TestLotto {
     }
 
     @Test
-    void 로또_번호는_모두_1에서_45까지() {
-        List<Integer> numbers = List.of(1, 2, 3, 0, 4, 5);
-        try {
-            Lotto lotto = new Lotto(numbers);
-            fail();
-        }
-        catch (RuntimeException e){
-            assertThat(e.getMessage()).isEqualTo("로또 번호는 1~45까지의 숫자여야 한다.");
-        }
+    void 로또_번호가_1보다_작거나_45보다_크면_예외가_발생한다() {
+        // 0이 포함된 경우 (하한 경계)
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 0, 4, 5)))
+            .isInstanceOf(RuntimeException.class)
+            .hasMessage("로또 번호는 1~45까지의 숫자여야 한다.");
+
+        // 46이 포함된 경우 (상한 경계)
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 46, 4, 5)))
+            .isInstanceOf(RuntimeException.class)
+            .hasMessage("로또 번호는 1~45까지의 숫자여야 한다.");
     }
 }
