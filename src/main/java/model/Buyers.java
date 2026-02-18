@@ -2,6 +2,8 @@ package model;
 
 import java.util.Map;
 
+import Interface.LottoGenerator;
+
 public class Buyers {
     Lottos lottos;
     Integer spentMoney = 0;
@@ -10,10 +12,10 @@ public class Buyers {
     Double profitRate = 0.0;
     Vendor vendor;
 
-    public Buyers(){
+    public Buyers(LottoGenerator generator){
         lottoResult = new LottoResult();
         lottos = new Lottos();
-        vendor = new Vendor();
+        vendor = new Vendor(generator);
     }
 
     public Lottos buyLotto(Integer money) {

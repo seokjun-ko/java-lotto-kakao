@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class AutoLottoGenerator {
+import Interface.LottoGenerator;
+
+public class AutoLottoGenerator implements LottoGenerator {
 	private final List<Integer> numbers;
 
 	public AutoLottoGenerator(){
@@ -15,7 +17,7 @@ public class AutoLottoGenerator {
 			.collect(Collectors.toCollection(ArrayList::new));
 	}
 
-
+	@Override
 	public Lotto issueLotto() {
 		Collections.shuffle(numbers);
 		return new Lotto(new ArrayList<>(numbers.subList(0, LottoNumber.LOTTO_SIZE)));

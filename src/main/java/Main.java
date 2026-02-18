@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import Interface.LottoGenerator;
+import model.AutoLottoGenerator;
 import model.Buyers;
 import model.Lotto;
 import model.Lottos;
@@ -9,7 +11,8 @@ public class Main {
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
-		Buyers buyer = new Buyers();
+		LottoGenerator autoGenerator = new AutoLottoGenerator();
+		Buyers buyer = new Buyers(autoGenerator);
 		try {
 			System.out.printf("구입금액을 입력해 주세요.");
 			if(!sc.hasNextLine()) return;
