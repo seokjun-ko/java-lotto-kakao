@@ -10,23 +10,28 @@ public class Buyers {
     LottoResult lottoResult;
     Result result;
     Double profitRate = 0.0;
-    Vendor vendor;
 
-    public Buyers(LottoGenerator generator){
+    public Buyers(){
         lottoResult = new LottoResult();
         lottos = new Lottos();
-        vendor = new Vendor(generator);
     }
 
-    public Lottos buyLotto(Integer money) {
+    public Lottos buyLotto(Integer money, LottoGenerator generator) {
+        Vendor vendor = new Vendor(generator);
         Lottos returnedLottos = vendor.sell(money);
-        setLottos(returnedLottos);
+        addLottos(returnedLottos);
         setSpentMoney(money);
         return lottos;
     }
 
-    public void setLottos(Lottos lottos) {
-        this.lottos = lottos;
+    public void addLottos(Lottos lottos) {
+        for (Lotto lotto : lottos) {
+            this.lottos.add(lotto);
+        }
+    }
+
+    public Lottos getLottos() {
+        return this.lottos;
     }
 
     public void setSpentMoney(Integer money){

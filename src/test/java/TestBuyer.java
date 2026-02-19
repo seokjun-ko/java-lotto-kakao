@@ -10,10 +10,11 @@ import static org.mockito.Mockito.*;
 
 public class TestBuyer {
     private Buyers buyers;
+    private LottoGenerator mockGenerator;
     @BeforeEach
     void setUp() {
-        LottoGenerator mockGenerator = mock(LottoGenerator.class);
-        buyers = new Buyers(mockGenerator);
+        mockGenerator = mock(LottoGenerator.class);
+        buyers = new Buyers();
     }
 
     @Test
@@ -29,7 +30,7 @@ public class TestBuyer {
         result.setNumber("1, 2, 3, 4, 5, 10");
         result.setBonus("7");
 
-        buyers.setLottos(lottos);
+        buyers.addLottos(lottos);
         buyers.setSpentMoney(12000);
         buyers.setResult(result.getResult());
 
@@ -47,7 +48,7 @@ public class TestBuyer {
         result.setNumber("1, 2, 3, 4, 5, 10");
         result.setBonus("7");
 
-        buyers.setLottos(lottos);
+        buyers.addLottos(lottos);
         buyers.setSpentMoney(12000);
         buyers.setResult(result.getResult());
         buyers.compare();
